@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/setting/setting",
+    "pages/detail/detail"
+  ],
+  "usingComponents": {
+      "van-button": "/modules/vant/button/index",
+      "van-tabbar": "/modules/vant/tabbar/index",
+      "van-tabbar-item": "/modules/vant/tabbar-item/index",
+      "van-cell": "/modules/vant/cell/index",
+      "van-cell-group": "/modules/vant/cell-group/index",
+      "van-icon": "/modules/vant/icon/index",
+      "van-panel": "/modules/vant/panel/index",
+      "van-field": "/modules/vant/field/index",
+      "van-slider": "/modules/vant/slider/index",
+      "van-toast": "/modules/vant/toast/index",
+      "van-row": "/modules/vant/row/index",
+      "van-col": "/modules/vant/col/index"
+  }
+}

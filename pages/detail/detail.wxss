@@ -1,0 +1,4 @@
+/* pages/detail/detail.wxss */
+.task-num {
+    padding: 50rpx 50rpx;
+}

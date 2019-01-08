@@ -1,0 +1,10 @@
+/* pages/home/home.wxss */
+.task-add {
+    position: fixed;
+    bottom: 140rpx;
+    right: 50rpx;
+}
+
+.task-edit{
+    margin-left: 50rpx; 
+}

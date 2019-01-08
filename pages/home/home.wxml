@@ -1,0 +1,17 @@
+<view class="home-wrapper">
+    <!-- task list -->
+    <van-cell-group>
+        <van-cell wx:for="{{tasks}}" wx:key="{{item.id}}" title="{{item.name}}" label="{{item.desc}}" value="时长: {{item.num}}" size="large">
+            <van-icon slot="right-icon" name="wap-nav" class="van-cell__right-icon task-edit" size="60rpx" id="{{item.id}}" bind:click="editTask" />
+        </van-cell>
+    </van-cell-group>
+
+    <van-icon style="margin-right: 100rpx;" bindtap="addTask" class="task-add" name="add" size="100rpx" color="#15ABFF" />
+
+    <!-- tabber -->
+    <van-tabbar>
+        <van-tabbar-item icon="fire" info="{{taskCount}}">任务</van-tabbar-item>
+        <van-tabbar-item icon="label">记录</van-tabbar-item>
+        <van-tabbar-item icon="setting">设置</van-tabbar-item>
+    </van-tabbar>
+</view>
