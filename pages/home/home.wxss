@@ -2,9 +2,20 @@
 .task-add {
     position: fixed;
     bottom: 140rpx;
-    right: 50rpx;
+    right: 20rpx;
 }
 
 .task-edit{
     margin-left: 50rpx; 
+}
+
+.task-wrapper, .setting-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.setting-slide-wrapper {
+    padding: 50rpx;
 }

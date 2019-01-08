@@ -2,7 +2,8 @@
   "pages": [
     "pages/home/home",
     "pages/setting/setting",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/work/work"
   ],
   "usingComponents": {
       "van-button": "/modules/vant/button/index",
@@ -16,6 +17,7 @@
       "van-slider": "/modules/vant/slider/index",
       "van-toast": "/modules/vant/toast/index",
       "van-row": "/modules/vant/row/index",
-      "van-col": "/modules/vant/col/index"
+      "van-col": "/modules/vant/col/index",
+      "van-transition": "/modules/vant/transition/index"
   }
 }

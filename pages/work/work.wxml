@@ -1,0 +1,24 @@
+<view class="work-wrapper">
+    <!-- count -->
+    <view class="timer-wrapper">
+        <view class="timer-content">
+        </view>
+        <view class="timer-mask" style="bottom: {{percent}}px">
+        </view>
+        <view class="timer-border">
+            <text class="timer-text work">{{time.h}}:{{time.m}}:{{time.s}}</text>
+        </view>
+    </view>
+
+    <!-- operate -->
+    <van-row class="operate-wrapper">
+        <van-col span="12">
+            <van-button size="large" type="default" bind:click="cancle">放弃</van-button>
+        </van-col>
+        <van-col span="12">
+            
+            <van-button size="large" class="done" bind:click="cancle">完成</van-button>
+            
+        </van-col>
+    </van-row>
+</view>

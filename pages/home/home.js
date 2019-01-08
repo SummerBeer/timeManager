@@ -1,4 +1,6 @@
 // pages/home/home.js
+import Toast from "../../modules/vant/toast/toast"
+
 Page({
 
     /**
@@ -6,7 +8,12 @@ Page({
      */
     data: {
         taskCount: 0,
-        tasks: []
+        tasks: [],
+        curPage: "0",
+        setting: {
+            workTime: 25,
+            breakTime: 5
+        }
     },
 
     addTask(){
@@ -21,14 +28,67 @@ Page({
         })
     },
 
+    startWork(e){
+        wx.navigateTo({
+            url: `/pages/work/work?id=${e.target.id}`
+        })
+    },
+
+    toTasks(){
+        this.setData({
+            curPage: "0"
+        })
+    },
+
+    toSetting(){
+        this.setData({
+            curPage: "2"
+        })
+    },
+
+    setWorkTime(e){
+        this.setData({
+            ["setting.workTime"]: e.detail
+        })
+    },
+
+    setBreakTime(e){
+        this.setData({
+            ["setting.breakTime"]: e.detail
+        })
+    },
+
+    setSetting(){
+        var curSetting = this.data.setting
+        try{
+            wx.setStorageSync("setting", curSetting)
+            Toast.success("保存成功")
+        }
+        catch(e){
+            Toast.fail("保存失败")
+            console.error('error', e)
+        }
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+
+        // load user setting
+        var setting = wx.getStorageSync("setting") || []
+        if(setting.length > 0){
+            this.setData({
+                setting: setting
+            })
+        }
+
+        // load tasks
         var tasks = wx.getStorageSync("tasks") || []
         if(tasks.length > 0){
             this.setData({
-                tasks: tasks
+                tasks: tasks,
+                taskCount: tasks.length
             })
         }
     },
