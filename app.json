@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/setting/setting",
     "pages/detail/detail",
     "pages/work/work"
   ],
@@ -18,6 +17,7 @@
       "van-toast": "/modules/vant/toast/index",
       "van-row": "/modules/vant/row/index",
       "van-col": "/modules/vant/col/index",
-      "van-transition": "/modules/vant/transition/index"
+      "van-transition": "/modules/vant/transition/index",
+      "van-dialog": "/modules/vant/dialog/index"
   }
 }

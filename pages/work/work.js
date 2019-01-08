@@ -43,6 +43,7 @@ Page({
             if (time == 0) {
                 clearInterval(timer)
                 if (this.data.status == "work") {
+                    this.updateRecord()
                     this.setData({
                         status: "break"
                     })
@@ -80,6 +81,10 @@ Page({
         })
 
         return time-1
+    },
+
+    updateRecord(){
+
     },
 
     /**

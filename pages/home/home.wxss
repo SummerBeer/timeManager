@@ -9,7 +9,7 @@
     margin-left: 50rpx; 
 }
 
-.task-wrapper, .setting-wrapper {
+.task-wrapper, .record-wrapper, .setting-wrapper {
     position: fixed;
     top: 0;
     left: 0;
@@ -18,4 +18,16 @@
 
 .setting-slide-wrapper {
     padding: 50rpx;
+}
+
+.clear-wrapper view {
+    padding: 30rpx;
+}
+
+.empty {
+    position: relative;
+    top: 100rpx;
+    text-align: center;
+    font-size: 40rpx;
+    color: #666;
 }

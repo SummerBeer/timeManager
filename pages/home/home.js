@@ -1,5 +1,6 @@
 // pages/home/home.js
 import Toast from "../../modules/vant/toast/toast"
+import Dialog from "../../modules/vant/dialog/dialog"
 
 Page({
 
@@ -13,7 +14,8 @@ Page({
         setting: {
             workTime: 25,
             breakTime: 5
-        }
+        },
+        record: {}
     },
 
     addTask(){
@@ -37,6 +39,12 @@ Page({
     toTasks(){
         this.setData({
             curPage: "0"
+        })
+    },
+
+    toRecord(){
+        this.setData({
+            curPage: "1"
         })
     },
 
@@ -70,14 +78,24 @@ Page({
         }
     },
 
+    clearRecord(){
+        Dialog.confirm({
+            message: "确认清除记录?"
+        }).then(() => {
+            console.log('clear record ... ')
+        }).catch(() => {
+            console.log("cancle operate ... ")
+        })
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
 
         // load user setting
-        var setting = wx.getStorageSync("setting") || []
-        if(setting.length > 0){
+        var setting = wx.getStorageSync("setting") || {}
+        if(Object.keys(setting).length > 0){
             this.setData({
                 setting: setting
             })
@@ -89,6 +107,14 @@ Page({
             this.setData({
                 tasks: tasks,
                 taskCount: tasks.length
+            })
+        }
+
+        // load record
+        var record = wx.getStorageSync("record") || {}
+        if (Object.keys(setting).length > 0){
+            this.setData({
+                record: record
             })
         }
     },
