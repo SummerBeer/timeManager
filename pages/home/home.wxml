@@ -40,8 +40,8 @@
 
     <!-- setting -->
     <van-transition class="setting-wrapper" show="{{curPage==2? true: false}}" name="fade-left">
+        <scroll-view scroll-y style="height: 2000rpx;" show="{{curPage==2? true: false}}" name="fade-left">
         <van-panel use-footer-slot>
-            <view>
                 <van-cell title="任务时长" value="{{setting.workTime}}" />
                 <view class="setting-slide-wrapper">
                     <van-slider value="{{setting.workTime}}" step="5" min="5" max="100" bind:change="setWorkTime" />
@@ -50,14 +50,17 @@
                 <view class="setting-slide-wrapper">
                     <van-slider value="{{setting.breakTime}}" step="5" min="5" max="100" bind:change="setBreakTime" />
                 </view>
-            </view>
+                <van-cell title="背景音乐" value="当前音乐:{{setting.sound}}"/>
+                <van-picker visible-item-count="3" columns="{{sounds}}" bind:change="pickAudio" />
             <view slot="footer">
-                <van-button size="small" type="danger" bind:click="setSetting">保存</van-button>
+                <van-button size="large" type="danger" bind:click="setSetting">保存</van-button>
             </view>
         </van-panel>
+        </scroll-view>
 
         <van-toast id="van-toast" />
     </van-transition>
+
 
     <van-icon bindtap="addTask" class="task-add" name="add" size="100rpx" color="#15ABFF" />
 

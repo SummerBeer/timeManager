@@ -1,6 +1,8 @@
 // pages/work/work.js
 import Toast from "../../modules/vant/toast/toast"
 
+const myaudio = wx.createInnerAudioContext()
+
 Page({
 
     /**
@@ -17,7 +19,18 @@ Page({
         },
         percent: 0,
         isFinish: false,
-        isPause: false
+        isPause: false,
+        soundSrc: "",
+        audioCtx: null
+    },
+
+    play(){
+        myaudio.play()
+        console.log(`play music`)
+    },
+
+    stop(){
+        myaudio.stop()
     },
 
     cancle() {
@@ -49,7 +62,8 @@ Page({
 
         // work
         if (this.data.status == "work") {
-            this.time = this.data.setting.workTime * 60 
+            this.time = this.data.setting.workTime * 60
+            this.play()
         }
         // break
         else {
@@ -57,7 +71,6 @@ Page({
         }
 
         this.timer = setInterval(() => {
-            console.log(`surplus time: ${this.time}`)
             this.time = this.updateTimer(this.time)
             if (this.time < 0) {
                 clearInterval(this.timer)
@@ -68,6 +81,7 @@ Page({
                         status: "break",
                         isFinish: true
                     })
+                    this.stop()
                     this.updateRecord()
                     this.updateTask()
                 } 
@@ -105,7 +119,6 @@ Page({
             percent: percent
         })
 
-        console.log(`percent: ${percent}`)
         return time - 1
     },
 
@@ -185,6 +198,7 @@ Page({
     },
 
 
+
     /**
      * 生命周期函数--监听页面加载
      */
@@ -206,9 +220,13 @@ Page({
         }
 
         // load setting
+        var setting = wx.getStorageSync("setting")
         this.setData({
-            setting: wx.getStorageSync("setting")
+            setting: setting
         })
+
+        // load audioCtx
+        myaudio.src = `/audio/${setting.sound}.mp3`
 
         // toggle timer
         this.toggleTimer()
@@ -218,7 +236,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
-
+        
     },
 
     /**
@@ -239,6 +257,7 @@ Page({
      */
     onUnload: function() {
         clearInterval(this.timer)
+        myaudio.destroy()
     },
 
     /**

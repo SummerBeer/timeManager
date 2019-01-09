@@ -13,7 +13,8 @@ Page({
         curPage: "0",
         setting: {
             workTime: 25,
-            breakTime: 5
+            breakTime: 5,
+            sound: ""
         },
         records: [],
         curDayRecord: {
@@ -23,7 +24,12 @@ Page({
         totalRecord: {
             total: 0,
             items: []
-        }
+        },
+        sounds: [
+            "audio1",
+            "audio2",
+            "audio3"
+        ]
     },
 
     addTask() {
@@ -83,6 +89,14 @@ Page({
             Toast.fail("保存失败")
             console.error('error', e)
         }
+    },
+
+    pickAudio(e){
+        var {picker, value, index} = e.detail
+        console.log(`sound: ${value}, index: ${index}`)
+        this.setData({
+            ["setting.sound"]: value
+        })
     },
 
     clearRecord() {

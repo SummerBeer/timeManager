@@ -8,7 +8,8 @@ App({
             console.log("setting init ..")
             setting = {
                 workTime: 25,
-                breakTime: 5
+                breakTime: 5,
+                sound: "audio1"
             }
             wx.setStorageSync("setting", setting)
         }

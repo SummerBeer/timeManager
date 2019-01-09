@@ -1,4 +1,8 @@
 <view class="work-wrapper">
+    <!-- <audio src="{{soundSrc}}" id="audio1"></audio>
+    <audio src="{{soundSrc}}" id="audio2"></audio>
+    <audio src="{{soundSrc}}" id="audio3"></audio> -->
+
     <!-- count -->
     <view class="timer-wrapper">
         <view class="timer-content">
