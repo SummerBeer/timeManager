@@ -12,9 +12,5 @@ App({
             }
             wx.setStorageSync("setting", setting)
         }
-
-        // test
-        // var date = new Date().toLocaleString().split(" ")[0]
-        // console.log(`date: ${date}`)
     }
 })

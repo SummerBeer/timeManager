@@ -91,6 +91,7 @@ Page({
         }).then(() => {
             console.log('clear records ... ')
             wx.setStorageSync("records", [])
+            this.refreshRecordDisplay()
         }).catch(() => {
             console.log("cancle operate ... ")
         })
@@ -116,11 +117,11 @@ Page({
 
         this.setData({
             curDayRecord: {
-                total: dayTotal,
+                total: dayTotal.toFixed(2),
                 items: curDayRecord
             },
             totalRecord: {
-                total: total,
+                total: total.toFixed(2),
                 items: records
             },
             records: records
@@ -171,7 +172,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-        console.log("home page show")
+        console.log("pages stacks", getCurrentPages())
         // load tasks
         var tasks = wx.getStorageSync("tasks") || []
         this.setData({

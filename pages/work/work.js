@@ -49,7 +49,7 @@ Page({
 
         // work
         if (this.data.status == "work") {
-            this.time = this.data.setting.workTime * 60 - 58
+            this.time = this.data.setting.workTime * 60 
         }
         // break
         else {
@@ -87,7 +87,7 @@ Page({
 
         var h = Math.floor(time / 3600)
         var m = Math.floor(time / 60 - h * 60)
-        var s = Math.floor(time - h * 3600 - m * 60)
+        var s = Math.floor(time - h * 3600 - m * 60) 
 
         this.setData({
             ["time.h"]: h,
@@ -130,7 +130,6 @@ Page({
             // 任务完成
             Toast.success("完成任务")
             console.log(`task done ... `)
-            this.updateTask()
 
             var curRecord = {}
             var date = new Date().toLocaleString().split(" ")[0]
@@ -161,7 +160,7 @@ Page({
         var curTask = this.data.task
         curTask.num--
 
-            var tasks = wx.getStorageSync("tasks")
+        var tasks = wx.getStorageSync("tasks")
 
         for (let i = 0; i < tasks.length; i++) {
             if (tasks[i].id == curTask.id) {
@@ -174,6 +173,15 @@ Page({
         }
 
         wx.setStorageSync("tasks", tasks)
+
+        if (curTask.num == 0) {
+            Toast.success("任务完成")
+            setTimeout(() => {
+                wx.navigateBack({
+                    delta: 1
+                })
+            }, 1000)
+        }
     },
 
 
@@ -230,7 +238,7 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
-
+        clearInterval(this.timer)
     },
 
     /**
