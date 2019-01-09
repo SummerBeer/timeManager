@@ -6,7 +6,7 @@
 }
 
 .task-edit{
-    margin-left: 50rpx; 
+    margin-left: 70rpx; 
 }
 
 .task-wrapper, .record-wrapper, .setting-wrapper {
@@ -38,4 +38,14 @@
     text-align: center;
     font-size: 40rpx;
     color: #666;
+}
+
+.edit-task {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 140rpx;
+    background-color: #ddd;
+    opacity: 0.5;
 }

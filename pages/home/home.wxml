@@ -6,23 +6,26 @@
         </view>
         <van-cell-group wx:if="{{tasks.length > 0}}">
             <van-cell wx:for="{{tasks}}" wx:key="{{item.id}}" title="{{item.name}}" label="{{item.desc}}" value="时长: {{item.num}}" size="large" bind:click="startWork" id="{{item.id}}">
-                <van-icon slot="right-icon" name="wap-nav" class="van-cell__right-icon task-edit" size="60rpx" id="{{item.id}}" bind:click="editTask" />
+
+                <van-icon slot="right-icon" name="wap-nav" class="van-cell__right-icon task-edit" size="60rpx" id="{{item.id}}" />
             </van-cell>
+            <view class="edit-task" bindtap="editTask">
+            </view>
         </van-cell-group>
     </van-transition>
 
     <!-- record -->
     <van-transition class="record-wrapper" show="{{(curPage==1? true: false) && (records.length > 0? true: false)}}" name="fade">
         <van-panel title="今日专注">
-            <van-cell title="总时长" value="{{curDayRecord.total}}h"/>
+            <van-cell title="总时长" value="{{curDayRecord.total}}h" />
         </van-panel>
 
         <van-panel title="历史专注">
-            <van-cell title="总时长" value="{{totalRecord.total}}h"/>
+            <van-cell title="总时长" value="{{totalRecord.total}}h" />
         </van-panel>
 
         <van-row class="clear-wrapper">
-            <van-col span="24" >
+            <van-col span="24">
                 <van-button size="large" type="danger" bind:click="clearRecord">清除记录</van-button>
             </van-col>
         </van-row>
@@ -41,7 +44,7 @@
             <view>
                 <van-cell title="任务时长" value="{{setting.workTime}}" />
                 <view class="setting-slide-wrapper">
-                    <van-slider value="{{setting.workTime}}"  step="5" min="5" max="100" bind:change="setWorkTime" />
+                    <van-slider value="{{setting.workTime}}" step="5" min="5" max="100" bind:change="setWorkTime" />
                 </view>
                 <van-cell title="休息时间" value="{{setting.breakTime}}" />
                 <view class="setting-slide-wrapper">
