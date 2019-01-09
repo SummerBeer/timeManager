@@ -7,12 +7,15 @@
 
             <van-cell title="任务时长" value="{{task.num}}" />
             <view class="task-num">
-                <van-slider value="10" step="10" bind:change="onChange" />
+                <van-slider value="10" min="10" step="10" bind:change="onChange" />
             </view>
         </view>
         <view slot="footer">
             <van-button size="small" bind:click="back">取消</van-button>
-            <van-button size="small" type="danger" bind:click="done">完成</van-button>
+            <van-button size="small" class="setting-done-btn" bind:click="done">完成</van-button>
+            <van-button size="small" type="danger" bind:click="deleteTask" wx:if="{{task.id != -1}}">删除</van-button>
         </view>
     </van-panel>
+
+    <van-dialog id="van-dialog"/>
 </view>

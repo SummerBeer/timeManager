@@ -55,9 +55,18 @@ view {
     color: #4a4a4a;
 }
 
+.timer-status {
+    position: absolute;
+    width: 100%;
+    top: 560rpx;
+    font-size: 60rpx;
+    text-align: center;
+    color: #15ABFF;
+}
+
 .operate-wrapper {
     position: fixed;
-    bottom: 0;
+    bottom: 50rpx;
     width: 100%;
 }
 

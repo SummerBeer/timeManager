@@ -1,4 +1,6 @@
 // pages/detail/detail.js
+import Dialog from "../../modules/vant/dialog/dialog"
+
 Page({
 
     /**
@@ -32,8 +34,8 @@ Page({
     },
 
     back() {
-        wx.navigateTo({
-            url: "/pages/home/home"
+        wx.navigateBack({
+            delta: 1
         })
     },
 
@@ -41,9 +43,7 @@ Page({
      * 将任务存储
      */
     done() {
-        wx.navigateTo({
-            url: "/pages/home/home"
-        })
+
         var curTask = this.data.task
         var tasks = wx.getStorageSync("tasks") || []
 
@@ -62,7 +62,34 @@ Page({
         }
         
         wx.setStorageSync("tasks", tasks)
+
+        wx.navigateBack({
+            delta: 1
+        })
     },
+
+    deleteTask(){
+        Dialog.confirm({
+            message: "确定删除吗"
+        }).then(() => {
+            var tasks = wx.getStorageSync("tasks")
+            for(let i=0; i<tasks.length; i++){
+                if(tasks[i].id == this.data.task.id){
+                    tasks.splice(i, 1)
+                }
+            }
+            wx.setStorageSync("tasks", tasks)
+
+            wx.navigateBack({
+                delta: 1
+            })
+        }).catch((e) => {
+
+        })
+    },
+
+  
+
 
     /**
      * 生命周期函数--监听页面加载

@@ -15,77 +15,118 @@ Page({
             workTime: 25,
             breakTime: 5
         },
-        record: {}
+        records: [],
+        curDayRecord: {
+            total: 0,
+            items: []
+        },
+        totalRecord: {
+            total: 0,
+            items: []
+        }
     },
 
-    addTask(){
+    addTask() {
         wx.navigateTo({
             url: "/pages/detail/detail"
         })
     },
 
-    editTask(e){
+    editTask(e) {
         wx.navigateTo({
             url: `/pages/detail/detail?id=${e.target.id}`
         })
     },
 
-    startWork(e){
+    startWork(e) {
         wx.navigateTo({
             url: `/pages/work/work?id=${e.target.id}`
         })
     },
 
-    toTasks(){
+    toTasks() {
         this.setData({
             curPage: "0"
         })
     },
 
-    toRecord(){
+    toRecord() {
         this.setData({
             curPage: "1"
         })
     },
 
-    toSetting(){
+    toSetting() {
         this.setData({
             curPage: "2"
         })
     },
 
-    setWorkTime(e){
+    setWorkTime(e) {
         this.setData({
             ["setting.workTime"]: e.detail
         })
     },
 
-    setBreakTime(e){
+    setBreakTime(e) {
         this.setData({
             ["setting.breakTime"]: e.detail
         })
     },
 
-    setSetting(){
+    setSetting() {
         var curSetting = this.data.setting
-        try{
+        try {
             wx.setStorageSync("setting", curSetting)
             Toast.success("保存成功")
-        }
-        catch(e){
+        } catch (e) {
             Toast.fail("保存失败")
             console.error('error', e)
         }
     },
 
-    clearRecord(){
+    clearRecord() {
         Dialog.confirm({
             message: "确认清除记录?"
         }).then(() => {
-            console.log('clear record ... ')
+            console.log('clear records ... ')
+            wx.setStorageSync("records", [])
         }).catch(() => {
             console.log("cancle operate ... ")
         })
+    },
+
+    refreshRecordDisplay(){
+        console.log(`refresh records`)
+        // refresh records data
+        var records = wx.getStorageSync("records") || []
+        var curDate = new Date().toLocaleString().split(" ")[0]
+        var curDayRecord = []
+        var total = 0
+        var dayTotal = 0
+
+        for (let item of records) {
+            let time = item.time
+            if (item.date == curDate) {
+                curDayRecord.push(item)
+                dayTotal += time
+            }
+            total += time
+        }
+
+        this.setData({
+            curDayRecord: {
+                total: dayTotal,
+                items: curDayRecord
+            },
+            totalRecord: {
+                total: total,
+                items: records
+            },
+            records: records
+        })
+
+        console.log(`dayTotal: ${dayTotal} , total: ${total}`)
     },
 
     /**
@@ -95,7 +136,7 @@ Page({
 
         // load user setting
         var setting = wx.getStorageSync("setting") || {}
-        if(Object.keys(setting).length > 0){
+        if (Object.keys(setting).length > 0) {
             this.setData({
                 setting: setting
             })
@@ -103,18 +144,18 @@ Page({
 
         // load tasks
         var tasks = wx.getStorageSync("tasks") || []
-        if(tasks.length > 0){
+        if (tasks.length > 0) {
             this.setData({
                 tasks: tasks,
                 taskCount: tasks.length
             })
         }
 
-        // load record
-        var record = wx.getStorageSync("record") || {}
-        if (Object.keys(setting).length > 0){
+        // load records
+        var records = wx.getStorageSync("records") || []
+        if (records.length > 0) {
             this.setData({
-                record: record
+                records: records
             })
         }
     },
@@ -130,6 +171,15 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
+        console.log("home page show")
+        // load tasks
+        var tasks = wx.getStorageSync("tasks") || []
+        this.setData({
+            tasks: tasks,
+            taskCount: tasks.length
+        })
+
+        this.refreshRecordDisplay()
 
     },
 
