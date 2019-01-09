@@ -5,7 +5,7 @@
 
             <van-field label="详细描述" type="textarea" autosize placeholder="请输入详情" clearable value="{{task.desc}}" bind:input="setDesc" />
 
-            <van-cell title="任务时长" value="{{task.num}}" />
+            <van-cell title="几个番茄" value="{{task.num}}" />
             <view class="task-num">
                 <van-slider value="10" min="10" step="10" bind:change="onChange" />
             </view>

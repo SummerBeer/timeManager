@@ -26,6 +26,7 @@ Page({
             items: []
         },
         sounds: [
+            "请选择",
             "audio1",
             "audio2",
             "audio3"

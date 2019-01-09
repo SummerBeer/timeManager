@@ -24,12 +24,12 @@ Page({
         audioCtx: null
     },
 
-    play(){
+    play() {
         myaudio.play()
         console.log(`play music`)
     },
 
-    stop(){
+    stop() {
         myaudio.stop()
     },
 
@@ -37,7 +37,7 @@ Page({
         clearInterval(this.timer)
 
         // 取消专注
-        if(this.data.status == "work"){
+        if (this.data.status == "work") {
             wx.navigateBack({
                 delta: 1
             })
@@ -55,8 +55,7 @@ Page({
         console.log(`start work ... time: ${this.data.setting.workTime}`)
 
         // clear timer
-        if(!this.timer){}
-        else{
+        if (!this.timer) {} else {
             clearInterval(this.timer)
         }
 
@@ -84,14 +83,14 @@ Page({
                     this.stop()
                     this.updateRecord()
                     this.updateTask()
-                } 
+                }
                 // break finish
                 else {
                     this.setData({
                         status: "work"
                     })
                 }
-                
+
                 this.toggleTimer()
             }
         }, 1000)
@@ -101,7 +100,7 @@ Page({
 
         var h = Math.floor(time / 3600)
         var m = Math.floor(time / 60 - h * 60)
-        var s = Math.floor(time - h * 3600 - m * 60) 
+        var s = Math.floor(time - h * 3600 - m * 60)
 
         this.setData({
             ["time.h"]: h,
@@ -173,7 +172,7 @@ Page({
         var curTask = this.data.task
         curTask.num--
 
-        var tasks = wx.getStorageSync("tasks")
+            var tasks = wx.getStorageSync("tasks")
 
         for (let i = 0; i < tasks.length; i++) {
             if (tasks[i].id == curTask.id) {
@@ -194,6 +193,17 @@ Page({
                     delta: 1
                 })
             }, 1000)
+        }
+    },
+
+    setAudioSrc() {
+        console.log("setting audio src")
+        if (this.data.setting.sound == "audio1") {
+            myaudio.src = "https://m10.music.126.net/20190110001214/8bf699587e858df9813eaa7827a8e04c/ymusic/cdbd/3f07/a4de/4cafb3cc0daad26f706e5091566a4edd.mp3"
+        } else if (this.data.setting.sound == "audio2") {
+            myaudio.src = "http://39.134.253.38/cache/ip.h5.rh03.sycdn.kuwo.cn/b681d5b3d52f53cf777daeb296af6c43/5c36161e/resource/a1/73/40/4167267740.aac?ich_args2=241-09234013036858_e8a29084907aed0818a5f75b8cf055e2_10112301_9c89602bd7c7f9d5923b518939a83798_59763f6cb416725a7f2c333216b6c1f8"
+        } else if (this.data.setting.sound == "audio3") {
+            myaudio.src = "https://m10.music.126.net/20190110001322/74e62f0a459b55af4ab2d693fff99f30/ymusic/d0f9/99fc/510f/240fe171b1158426ec53f38898188928.mp3"
         }
     },
 
@@ -226,7 +236,8 @@ Page({
         })
 
         // load audioCtx
-        myaudio.src = `/audio/${setting.sound}.mp3`
+        this.setAudioSrc()
+
 
         // toggle timer
         this.toggleTimer()
@@ -236,7 +247,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
-        
+
     },
 
     /**
@@ -249,15 +260,14 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
-    },
+    onHide: function() {},
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
         clearInterval(this.timer)
-        myaudio.destroy()
+        myaudio.stop()
     },
 
     /**

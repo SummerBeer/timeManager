@@ -40,9 +40,9 @@
 
     <!-- setting -->
     <van-transition class="setting-wrapper" show="{{curPage==2? true: false}}" name="fade-left">
-        <scroll-view scroll-y style="height: 2000rpx;" show="{{curPage==2? true: false}}" name="fade-left">
+        <scroll-view scroll-y style="height: 1000rpx;" show="{{curPage==2? true: false}}" name="fade-left">
         <van-panel use-footer-slot>
-                <van-cell title="任务时长" value="{{setting.workTime}}" />
+                <van-cell title="番茄时长" value="{{setting.workTime}}" />
                 <view class="setting-slide-wrapper">
                     <van-slider value="{{setting.workTime}}" step="5" min="5" max="100" bind:change="setWorkTime" />
                 </view>
@@ -62,7 +62,7 @@
     </van-transition>
 
 
-    <van-icon bindtap="addTask" class="task-add" name="add" size="100rpx" color="#15ABFF" />
+    <van-icon bindtap="addTask" class="task-add" name="add" size="120rpx" color="#15ABFF" />
 
     <!-- tabber -->
     <van-tabbar>
