@@ -9,3 +9,13 @@
 .setting-slide-wrapper {
     padding: 50rpx;
 }
+
+.avatar {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+}
+
+.username {
+    margin-left: 50rpx;
+}

@@ -6,13 +6,18 @@ Page({
         setting: {
             workTime: 25,
             breakTime: 5,
-            sound: ""
+            sound: "",
+            theme: "white"
         },
         sounds: [
             "请选择",
             "audio1",
             "audio2",
             "audio3"
+        ],
+        theme: [
+            "white",
+            "black"
         ]
     },
 
@@ -39,6 +44,20 @@ Page({
         }
     },
 
+    setTheme(e){
+        console.log(`[setting] theme radio group`, e)
+        this.setData({
+            ["setting.theme"]: e.detail
+        })
+    },
+
+    setThemeCell(e){
+        console.log(`[setting] theme cell `, e.target.dataset.name)
+        this.setData({
+            ["setting.theme"]: e.target.dataset.name
+        })
+    },
+
     pickAudio(e) {
         var {
             picker,
@@ -56,6 +75,10 @@ Page({
         this.setData({
             setting: setting
         })
+    },
+
+    loadTheme(){
+
     },
 
     /**

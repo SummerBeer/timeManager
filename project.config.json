@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.5.0",
 	"appid": "wx3699b3ac0ea640bb",
 	"projectname": "timeManager",
 	"debugOptions": {

@@ -21,7 +21,9 @@
         "van-col": "/modules/vant/col/index",
         "van-transition": "/modules/vant/transition/index",
         "van-dialog": "/modules/vant/dialog/index",
-        "van-picker": "/modules/vant/picker/index"
+        "van-picker": "/modules/vant/picker/index",
+        "van-radio": "/modules/vant/radio/index",
+        "van-radio-group": "/modules/vant/radio-group/index"
     },
     "window": {
         "backgroundTextStyle": "light",
@@ -36,7 +38,6 @@
         "borderStyle": "white",
         "backgroundColor": "#fff",
         "box-shadow": "0 0 6px 0",
-        "height": "80rpx",
         "list": [
             {
                 "iconPath": "img/task.png",
