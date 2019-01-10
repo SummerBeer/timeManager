@@ -7,3 +7,12 @@
     background-color: #15ABFF;
     color: white;
 }
+
+.btn-wrapper button {
+    margin-right: 40rpx;
+    width: 150rpx;
+}
+
+.input-wrapper view {
+    margin-bottom: 20rpx;
+}

@@ -23,16 +23,16 @@ Page({
         Dialog.confirm({
             message: "确认清除记录?"
         }).then(() => {
-            console.log('clear records ... ')
+            // console.log('clear records ... ')
             wx.setStorageSync("records", [])
             this.refreshRecordDisplay()
         }).catch(() => {
-            console.log("cancle operate ... ")
+            // console.log("cancle operate ... ")
         })
     },
 
     refreshRecordDisplay() {
-        console.log(`refresh records`)
+        // console.log(`refresh records`)
         // refresh records data
         var records = wx.getStorageSync("records") || []
         var curDate = new Date().toLocaleString().split(" ")[0]
@@ -61,7 +61,7 @@ Page({
             records: records
         })
 
-        console.log(`dayTotal: ${dayTotal} , total: ${total}`)
+        // console.log(`dayTotal: ${dayTotal} , total: ${total}`)
     },
 
     /**

@@ -7,7 +7,7 @@
 }
 
 .task-edit {
-    margin-left: 70rpx;
+    margin-left: 100rpx;
 }
 
 .task-wrapper {
@@ -30,7 +30,7 @@
     right: 0;
     top: 0;
     height: 100%;
-    width: 140rpx;
+    width: 124rpx;
     background-color: #ddd;
     opacity: 0.5;
 }

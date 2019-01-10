@@ -1,8 +1,4 @@
 <view class="work-wrapper">
-    <!-- <audio src="{{soundSrc}}" id="audio1"></audio>
-    <audio src="{{soundSrc}}" id="audio2"></audio>
-    <audio src="{{soundSrc}}" id="audio3"></audio> -->
-
     <!-- count -->
     <view class="timer-wrapper">
         <view class="timer-content">
@@ -20,11 +16,6 @@
         <van-col span="20" offset="2">
             <van-button size="large" type="{{status == 'work' ? 'danger': 'primary'}}" bind:click="cancle">{{status == "work" ? "放弃" : "休息结束"}}</van-button>
         </van-col>
-        <!-- <van-col span="12">
-            
-            <van-button size="large" class="done" bind:click="updateRecord">{{isFinish? "完成" : isPause? "继续" : "暂停"}}</van-button>
-            
-        </van-col> -->
     </van-row>
-    <van-toast id="van-toast"/>
+    <van-toast id="van-toast" />
 </view>

@@ -45,7 +45,7 @@ Page({
             value,
             index
         } = e.detail
-        console.log(`sound: ${value}, index: ${index}`)
+        // console.log(`sound: ${value}, index: ${index}`)
         this.setData({
             ["setting.sound"]: value
         })

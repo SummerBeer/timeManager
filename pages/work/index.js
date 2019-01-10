@@ -1,13 +1,8 @@
 // pages/work/work.js
 import Toast from "../../modules/vant/toast/toast"
-
 const myaudio = wx.createInnerAudioContext()
 
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
         task: {},
         setting: {},
@@ -17,16 +12,12 @@ Page({
             m: 0,
             s: 0
         },
-        percent: 0,
-        isFinish: false,
-        isPause: false,
-        soundSrc: "",
-        audioCtx: null
+        percent: 0
     },
 
     play() {
         myaudio.play()
-        console.log(`play music`)
+        // console.log(`play music`)
     },
 
     stop() {
@@ -52,10 +43,10 @@ Page({
     },
 
     toggleTimer() {
-        console.log(`start work ... time: ${this.data.setting.workTime}`)
+        // console.log(`start work ... time: ${this.data.setting.workTime}`)
 
         // clear timer
-        if (!this.timer) { } else {
+        if (!this.timer) {} else {
             clearInterval(this.timer)
         }
 
@@ -77,8 +68,7 @@ Page({
                 // work finish
                 if (this.data.status == "work") {
                     this.setData({
-                        status: "break",
-                        isFinish: true
+                        status: "break"
                     })
                     this.stop()
                     this.updateRecord()
@@ -123,49 +113,30 @@ Page({
 
     updateRecord() {
 
-        if (this.time >= 0) {
-            // 继续
-            if (this.data.isPause) {
-                this.toggleTimer()
-                this.setData({
-                    isPause: false
-                })
-            }
-            // 暂停
-            else {
-                clearInterval(this.timer)
-                this.setData({
-                    isPause: true
-                })
-            }
-        } else {
-            // 任务完成
-            Toast.success("完成任务")
-            console.log(`task done ... `)
+        // 任务完成
+        Toast.success("完成任务")
+        // console.log(`task done ... `)
 
-            var curRecord = {}
-            var date = new Date().toLocaleString().split(" ")[0]
-            var name = this.data.task.name
-            var time = Math.round(this.data.setting.workTime / 60 * 100) / 100
+        var curRecord = {}
+        var date = new Date().toLocaleString().split(" ")[0]
+        var name = this.data.task.name
+        var time = Math.round(this.data.setting.workTime / 60 * 100) / 100
 
-            curRecord = {
-                id: "" + Date.now(),
-                date: date,
-                name: name,
-                time: time
-            }
-
-            var records = wx.getStorageSync("records") || []
-            records.push(curRecord)
-
-            this.setData({
-                records: records
-            })
-
-            wx.setStorageSync("records", records)
-
-            this.toggleTimer()
+        curRecord = {
+            id: "" + Date.now(),
+            date: date,
+            name: name,
+            time: time
         }
+
+        var records = wx.getStorageSync("records") || []
+        records.push(curRecord)
+
+        this.setData({
+            records: records
+        })
+
+        wx.setStorageSync("records", records)
     },
 
     updateTask() {
@@ -197,7 +168,7 @@ Page({
     },
 
     setAudioSrc() {
-        console.log("setting audio src")
+        // console.log("setting audio src")
         if (this.data.setting.sound == "audio1") {
             myaudio.src = "https://m10.music.126.net/20190110001214/8bf699587e858df9813eaa7827a8e04c/ymusic/cdbd/3f07/a4de/4cafb3cc0daad26f706e5091566a4edd.mp3"
         } else if (this.data.setting.sound == "audio2") {
@@ -212,7 +183,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
         wx.setNavigationBarTitle({
             title: "专注中"
         })
@@ -246,26 +217,26 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onReady: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () { },
+    onHide: function() {},
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
         clearInterval(this.timer)
         myaudio.stop()
     },
@@ -273,21 +244,21 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onReachBottom: function() {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
 
     }
 })
