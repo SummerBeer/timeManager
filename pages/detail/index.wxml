@@ -1,0 +1,21 @@
+<view>
+    <van-panel use-footer-slot>
+        <view>
+            <van-field label="任务名称:" clearable placeholder="请输入任务名称" required error value="{{task.name}}" bind:input="setName" />
+
+            <van-field label="详细描述" type="textarea" autosize placeholder="请输入详情" clearable value="{{task.desc}}" bind:input="setDesc" />
+
+            <van-cell title="几个番茄" value="{{task.num}}" />
+            <view class="task-num">
+                <van-slider value="10" min="10" step="10" bind:change="onChange" />
+            </view>
+        </view>
+        <view slot="footer">
+            <van-button size="small" bind:click="back">取消</van-button>
+            <van-button size="small" class="setting-done-btn" bind:click="done">完成</van-button>
+            <van-button size="small" type="danger" bind:click="deleteTask" wx:if="{{task.id != -1}}">删除</van-button>
+        </view>
+    </van-panel>
+
+    <van-dialog id="van-dialog"/>
+</view>

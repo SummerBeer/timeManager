@@ -1,0 +1,36 @@
+/* pages/home/home.wxss */
+
+.task-add {
+    position: fixed;
+    bottom: 50rpx;
+    right: 20rpx;
+}
+
+.task-edit {
+    margin-left: 70rpx;
+}
+
+.task-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.empty {
+    position: relative;
+    top: 100rpx;
+    text-align: center;
+    font-size: 40rpx;
+    color: #666;
+}
+
+.edit-task {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 140rpx;
+    background-color: #ddd;
+    opacity: 0.5;
+}

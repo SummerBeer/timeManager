@@ -1,0 +1,9 @@
+/* pages/detail/detail.wxss */
+.task-num {
+    padding: 50rpx 50rpx;
+}
+
+.setting-done-btn button {
+    background-color: #15ABFF;
+    color: white;
+}

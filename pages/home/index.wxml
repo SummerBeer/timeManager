@@ -1,0 +1,14 @@
+<!-- task list -->
+<view class="task-wrapper">
+    <view class="empty" wx:if="{{tasks.length == 0}}">
+        你还没有添加任务
+    </view>
+    <van-cell-group wx:if="{{tasks.length > 0}}">
+        <van-cell wx:for="{{tasks}}" wx:key="{{item.id}}" title="{{item.name}}" label="{{item.desc}}" value="时长: {{item.num}}" size="large" bind:click="startWork" id="{{item.id}}">
+            <van-icon slot="right-icon" name="wap-nav" class="van-cell__right-icon task-edit" size="60rpx" id="{{item.id}}" />
+        </van-cell>
+        <view class="edit-task" bindtap="editTask">
+        </view>
+    </van-cell-group>
+    <van-icon bindtap="addTask" class="task-add" name="add" size="120rpx" color="#15ABFF" />
+</view>

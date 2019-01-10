@@ -1,0 +1,20 @@
+/* pages/home/home.wxss */
+.record-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.clear-wrapper view {
+    padding: 30rpx;
+}
+
+.record-empty {
+    position: relative;
+    top: 100rpx;
+    text-align: center;
+    font-size: 40rpx;
+    color: #666;
+}
+

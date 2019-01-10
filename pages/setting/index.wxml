@@ -1,0 +1,18 @@
+<scroll-view class="setting-wrapper" scroll-y style="height: 1000rpx;">
+    <van-panel use-footer-slot>
+        <van-cell title="番茄时长" value="{{setting.workTime}}" />
+        <view class="setting-slide-wrapper">
+            <van-slider value="{{setting.workTime}}" step="5" min="5" max="100" bind:change="setWorkTime" />
+        </view>
+        <van-cell title="休息时间" value="{{setting.breakTime}}" />
+        <view class="setting-slide-wrapper">
+            <van-slider value="{{setting.breakTime}}" step="5" min="5" max="100" bind:change="setBreakTime" />
+        </view>
+        <van-cell title="背景音乐" value="当前音乐:{{setting.sound}}" />
+        <van-picker visible-item-count="3" columns="{{sounds}}" bind:change="pickAudio" />
+        <view slot="footer">
+            <van-button size="large" type="danger" bind:click="setSetting">保存</van-button>
+        </view>
+    </van-panel>
+    <van-toast id="van-toast" />
+</scroll-view>

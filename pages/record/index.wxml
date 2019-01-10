@@ -1,0 +1,23 @@
+<view class="record-wrapper">
+    <!-- record -->
+    <view class="record-wrapper" wx:if="{{records.length > 0? true: false}}" name="fade">
+        <van-panel title="今日专注">
+            <van-cell title="总时长" value="{{curDayRecord.total}}h" />
+        </van-panel>
+
+        <van-panel title="历史专注">
+            <van-cell title="总时长" value="{{totalRecord.total}}h" />
+        </van-panel>
+
+        <van-row class="clear-wrapper">
+            <van-col span="24">
+                <van-button size="large" type="danger" bind:click="clearRecord">清除记录</van-button>
+            </van-col>
+        </van-row>
+        <van-dialog id="van-dialog" />
+    </view>
+
+    <view class="record-empty" wx:if="{{records.length > 0? false: true}}">
+        你还没有专注过...
+    </view>
+</view>

@@ -1,24 +1,61 @@
 {
-  "pages": [
-    "pages/home/home",
-    "pages/detail/detail",
-    "pages/work/work"
-  ],
-  "usingComponents": {
-      "van-button": "/modules/vant/button/index",
-      "van-tabbar": "/modules/vant/tabbar/index",
-      "van-tabbar-item": "/modules/vant/tabbar-item/index",
-      "van-cell": "/modules/vant/cell/index",
-      "van-cell-group": "/modules/vant/cell-group/index",
-      "van-icon": "/modules/vant/icon/index",
-      "van-panel": "/modules/vant/panel/index",
-      "van-field": "/modules/vant/field/index",
-      "van-slider": "/modules/vant/slider/index",
-      "van-toast": "/modules/vant/toast/index",
-      "van-row": "/modules/vant/row/index",
-      "van-col": "/modules/vant/col/index",
-      "van-transition": "/modules/vant/transition/index",
-      "van-dialog": "/modules/vant/dialog/index",
-      "van-picker": "/modules/vant/picker/index"
-  }
+    "pages": [
+        "pages/home/index",
+        "pages/detail/index",
+        "pages/work/index",
+        "pages/setting/index",
+        "pages/record/index"
+    ],
+    "usingComponents": {
+        "van-button": "/modules/vant/button/index",
+        "van-tabbar": "/modules/vant/tabbar/index",
+        "van-tabbar-item": "/modules/vant/tabbar-item/index",
+        "van-cell": "/modules/vant/cell/index",
+        "van-cell-group": "/modules/vant/cell-group/index",
+        "van-icon": "/modules/vant/icon/index",
+        "van-panel": "/modules/vant/panel/index",
+        "van-field": "/modules/vant/field/index",
+        "van-slider": "/modules/vant/slider/index",
+        "van-toast": "/modules/vant/toast/index",
+        "van-row": "/modules/vant/row/index",
+        "van-col": "/modules/vant/col/index",
+        "van-transition": "/modules/vant/transition/index",
+        "van-dialog": "/modules/vant/dialog/index",
+        "van-picker": "/modules/vant/picker/index"
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "black",
+        "onReachBottomDistance": 50
+    },
+    "tabBar": {
+        "color": "#6e6d6b",
+        "selectedColor": "#15ABFF",
+        "borderStyle": "white",
+        "backgroundColor": "#fff",
+        "box-shadow": "0 0 6px 0",
+        "height": "80rpx",
+        "list": [
+            {
+                "iconPath": "img/task.png",
+                "selectedIconPath": "img/task1.png",
+                "pagePath": "pages/home/index",
+                "text": "任务"
+            },
+            {
+                "iconPath": "img/record.png",
+                "selectedIconPath": "img/record1.png",
+                "pagePath": "pages/record/index",
+                "text": "记录"
+            },
+            {
+                "iconPath": "img/setting.png",
+                "selectedIconPath": "img/setting1.png",
+                "pagePath": "pages/setting/index",
+                "text": "设置"
+            }
+        ]
+    }
 }
