@@ -55,13 +55,14 @@ Page({
                 curTask.id = tasks[0].id + 1
             }
             tasks.unshift(curTask)
+            wx.setStorageSync("tasks", tasks)
+
         }
         // 编辑任务
         else {
             tasks[curTask.id] = curTask
+            wx.setStorageSync("tasks", tasks)
         }
-
-        wx.setStorageSync("tasks", tasks)
 
         wx.navigateBack({
             delta: 1
@@ -107,6 +108,7 @@ Page({
                 }
             }
         }
+        console.log(`[edit] cur taks id: ${this.data.task.id}`)
     },
 
     /**

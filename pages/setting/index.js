@@ -42,6 +42,7 @@ Page({
             Toast.fail("保存失败")
             console.error('error', e)
         }
+        this.loadSetting()
     },
 
     setTheme(e){
@@ -75,6 +76,8 @@ Page({
         this.setData({
             setting: setting
         })
+        var audio = getApp().getAudio()
+        getApp().setAudioSrc(setting.sound)
     },
 
     loadTheme(){

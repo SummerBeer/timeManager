@@ -1,5 +1,9 @@
 /* pages/home/home.wxss */
 
+.task-wrapper {
+    background-color: white;
+}
+
 .task-add {
     position: fixed;
     bottom: 50rpx;
@@ -26,11 +30,10 @@
 }
 
 .edit-task {
-    position: absolute;
-    right: 0;
-    top: 0;
+    position: relative;
     height: 100%;
-    width: 124rpx;
-    background-color: #ccc;
     opacity: 0.5;
+    display: flex;
+    justify-content: center;
 }
+
